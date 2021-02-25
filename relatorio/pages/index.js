@@ -70,9 +70,21 @@ export default function Home() {
               </form>
             </Widget.Content>
           </Widget>
-
-
           
+          <Widget
+            as={motion.section}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            variants={{
+              show: { opacity: 1 },
+              hidden: { opacity: 0 },
+            }}
+          >
+            <Widget.Content>
+              <h1>Quizes da Galera</h1>
+
+            </Widget.Content>   
+          </Widget> 
+
         </Container>
       </PageBackground>
   );
