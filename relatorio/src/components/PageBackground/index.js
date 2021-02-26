@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
 const PageBackground = styled.div`
-    width: 100%
+    width: 100%;
+    align-self: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
     background-size: cover;
     background-position: center;
     background-image: url(${({ backgroundImage }) => backgroundImage});
-    background-color: ${({ theme }) => theme.colors.mainBg};
+    background-color: azure;//${({ theme }) => theme.colors.mainBg};
     flex: 1;
     @media screen and (max-width: 500px){
         background-image: none;

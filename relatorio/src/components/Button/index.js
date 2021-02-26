@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
 const Button = styled.button`
-    background-color: blue;
+    background-color: #979797;
     border-radius: 3px;
     width: 100%;
     padding: 10px 16px;
@@ -14,6 +14,9 @@ const Button = styled.button`
     &:disable {
         background-color: #979797;
         cursor: not-allowed;
+    }
+    &:hover {
+        background-color: khaki;
     }
 `;
 

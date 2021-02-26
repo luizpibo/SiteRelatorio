@@ -27,6 +27,7 @@ const QuizContainer = styled.div`
 export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
+  const [data, setDate] = React.useState('');
 
   return (
       <PageBackground>
@@ -39,7 +40,7 @@ export default function Home() {
           <Logo />
           <Widget
           as={motion.section}
-          transition={{ delay: 0, duration: 0.5}}
+          transition={{ delay: 0, duration: 1}}
           variants={{
             show: { opacity: 1, y: '0'},
             hidden: { opacity: 0, y: '100%' },
@@ -59,14 +60,27 @@ export default function Home() {
               }}
               >
                 <Input
-                  name="npmeDosUsuario"
+                  name="nomeDosUsuario"
                   onChange={(infosDoEvento) => setName(infosDoEvento.target.value)}
                   placeholder="Diz ai seu nome"
                   value={name}
                 />
+                <Input
+                  name="dataNascimento"
+                  onChange={(data) => setDate(data.target.value)}
+                  placeholder="Qual sua data de nascimento"
+                  value={data}
+                />
+                <Input
+                  name="nomeMacaco"
+                  onChange={(infosDoEvento) => setName(infosDoEvento.target.value)}
+                  placeholder="Qual o nome do seu macaco"
+                  //value={name}
+                />
                 <Button type="submit" disabled={name.length === 0}>
                   {`Jogar ${name}`}
                 </Button>
+                <p>{data}</p>
               </form>
             </Widget.Content>
           </Widget>
