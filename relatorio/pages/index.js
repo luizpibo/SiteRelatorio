@@ -28,12 +28,13 @@ export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
   const [data, setDate] = React.useState('');
+  const [qtde, setQtde] = React.useState('');
 
   return (
       <PageBackground>
         <Head>
           <title>
-            Luiz - {db.title}
+            {db.title}
           </title>
         </Head>
         <Container>
@@ -60,22 +61,25 @@ export default function Home() {
               }}
               >
                 <Input
-                  name="nomeDosUsuario"
+                  type='string'
+                  name="nomeDoUsuario"
                   onChange={(infosDoEvento) => setName(infosDoEvento.target.value)}
                   placeholder="Diz ai seu nome"
                   value={name}
                 />
                 <Input
+                  type="date"
                   name="dataNascimento"
                   onChange={(data) => setDate(data.target.value)}
                   placeholder="Qual sua data de nascimento"
                   value={data}
                 />
                 <Input
+                  type="number"
                   name="nomeMacaco"
-                  onChange={(infosDoEvento) => setName(infosDoEvento.target.value)}
-                  placeholder="Qual o nome do seu macaco"
-                  //value={name}
+                  onChange={(qtde) => setQtde(qtde.target.value)}
+                  placeholder=" "
+                  value={qtde}
                 />
                 <Button type="submit" disabled={name.length === 0}>
                   {`Jogar ${name}`}

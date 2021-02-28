@@ -9,9 +9,9 @@ const PageBackground = styled.div`
     background-size: cover;
     background-position: center;
     background-image: url(${({ backgroundImage }) => backgroundImage});
-    background-color: azure;//${({ theme }) => theme.colors.mainBg};
+    background-color: ${({ theme }) => theme.colors.mainBg};
     flex: 1;
-    @media screen and (max-width: 500px){
+    @media screen and (max-width: initial){
         background-image: none;
         &:after {
             content: "";

@@ -18,15 +18,15 @@ const InputBase = styled.input`
     }
 `;
 
-export default function Input({ onChange, placeholder, ...props}){
+export default function Input({ tipo, onChange, placeholder, ...props}){
     return(
         <div>
             <InputBase
+                type={tipo}
                 placeholder={placeholder}
                 onChange={onChange}
                 {...props}
             />
-            
         </div>
     );
 }
