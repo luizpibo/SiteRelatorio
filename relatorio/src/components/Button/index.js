@@ -15,9 +15,11 @@ const Button = styled.button`
         background-color: #979797;
         cursor: not-allowed;
     }
+    /*
     &:hover {
         background-color: khaki;
     }
+    */
 `;
 
 Button.propTypes = {

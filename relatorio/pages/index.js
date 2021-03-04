@@ -23,15 +23,30 @@ const QuizContainer = styled.div`
   }
 `;
 
-
+/*
+<Input
+  type='string'
+  name="nomeDoUsuario"
+  onChange={(infosDoEvento) => setName(infosDoEvento.target.value)}
+  placeholder="Diz ai seu nome"
+  value={name}
+/>
+<Input
+  type="date"
+  name="dataNascimento"
+  onChange={(data) => setDate(data.target.value)}
+  placeholder="Qual sua data de nascimento"
+  value={data}
+/>
+*/
 export default function Home() {
   const router = useRouter();
   const [name, setName] = React.useState('');
-  const [data, setDate] = React.useState('');
-  const [qtde, setQtde] = React.useState('');
+  //const [data, setDate] = React.useState('');
+  const [qtde, setQtde] = React.useState(0);
 
   return (
-      <PageBackground>
+      <PageBackground backgroundImage={db.bg}>
         <Head>
           <title>
             {db.title}
@@ -46,64 +61,46 @@ export default function Home() {
             show: { opacity: 1, y: '0'},
             hidden: { opacity: 0, y: '100%' },
           }}
+
           initial="hidden"
           animate="show"
           >
             <Widget.Header>
               <h1>{db.title}</h1>
             </Widget.Header>
-            <Widget.Content>
-              <p>{db.description}</p>
-              <form onSubmit={function (infoDoEvento){
+            <Widget.Content id="container">
+              <p>{"Quantas notas tem o relatorio"}</p>
+              <form onSubmit={function (infosDoEvento){
                 infosDoEvento.preventDefault();
-                router.push(`/quiz?name=${name}`);
-                console.log('Fazendo uma submissão por meio do react');
-              }}
-              >
+              }}>
                 <Input
-                  type='string'
-                  name="nomeDoUsuario"
-                  onChange={(infosDoEvento) => setName(infosDoEvento.target.value)}
-                  placeholder="Diz ai seu nome"
-                  value={name}
-                />
-                <Input
-                  type="date"
-                  name="dataNascimento"
-                  onChange={(data) => setDate(data.target.value)}
-                  placeholder="Qual sua data de nascimento"
-                  value={data}
-                />
-                <Input
-                  type="number"
-                  name="nomeMacaco"
-                  onChange={(qtde) => setQtde(qtde.target.value)}
-                  placeholder=" "
-                  value={qtde}
-                />
-                <Button type="submit" disabled={name.length === 0}>
-                  {`Jogar ${name}`}
+                    type="number"
+                    name="quantidade de linhas"
+                    onChange={(qtde) => setQtde(qtde.target.value)}
+                    placeholder=" "
+                    value={qtde}
+                    id = "botao"
+                  />
+                <Button type="submit" disabled={qtde == 0} onClick= {function(){
+                  var row;
+                  const c = window.document.getElementById("container");
+                  let qtdeB = window.document.getElementById("botao").value;
+                  window.console.log(qtdeB);
+                  for(let i= 0; i<qtdeB; i++){
+                    row = row+"<Input type = 'text'/>"
+                  }
+                  
+                  }
+                }>
+                  {`Gerar relatorio com ${qtde} linhas`}
                 </Button>
-                <p>{data}</p>
               </form>
+                
             </Widget.Content>
           </Widget>
-          
-          <Widget
-            as={motion.section}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            variants={{
-              show: { opacity: 1 },
-              hidden: { opacity: 0 },
-            }}
-          >
-            <Widget.Content>
-              <h1>Quizes da Galera</h1>
-
-            </Widget.Content>   
-          </Widget> 
-
         </Container>
       </PageBackground>
   );
 }
+
+
